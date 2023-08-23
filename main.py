@@ -3,7 +3,7 @@ from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.webdriver import WebDriver
-from app.settings import FOLLOWING_FILE, TOFOLLOW_FILE
+from app.settings import FOLLOWING_FILE, INSTAGRAM_PASSWORD, INSTAGRAM_USER, TOFOLLOW_FILE
 from app.terms_to_ignore import check_username
 from instagpy import InstaGPy
 
@@ -38,8 +38,8 @@ def login() -> WebDriver:
     sleep(5)
     username_input = browser.find_element(by=By.CSS_SELECTOR, value="input[name='username']")
     password_input = browser.find_element(by=By.CSS_SELECTOR, value="input[name='password']")
-    username_input.send_keys("guanma.ltd@gmail.com")
-    password_input.send_keys("deus te odeia 666")
+    username_input.send_keys(INSTAGRAM_USER)
+    password_input.send_keys(INSTAGRAM_PASSWORD)
     login_button = browser.find_element(by=By.XPATH ,value="//button[@type='submit']")
     login_button.click()
     return browser
